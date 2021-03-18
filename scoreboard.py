@@ -16,7 +16,7 @@ class Scoreboard(Turtle):
         self.update_scoreboard()
 
     def update_scoreboard(self):
-        self.write(arg=f"Player Score = {self.player_score}  AI Score = {self.AI_score}",
+        self.write(arg=f"AI Score = {self.AI_score}  Player Score = {self.player_score}",
                    align=ALIGNMENT,
                    font=FONT)
 

@@ -31,7 +31,7 @@ screen.onkey(AI.go_down, "s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(0.08)
     screen.update()
     ball.move()
     scoreboard.update_scoreboard()
@@ -44,14 +44,14 @@ while game_is_on:
     if (ball.xcor() == 330 and ball.distance(player) < 50) or (ball.xcor() == -330 and ball.distance(AI) < 50):
         ball.paddle_collision()
 
-    #detect score
+    #detect score player
     if ball.xcor() < -390:
         scoreboard.player_score +=1
         scoreboard.clear()
         scoreboard.update_scoreboard()
         ball.reset_ball()
 
-    #detect score
+    #detect score AI
     if ball.xcor() > 390:
         scoreboard.AI_score +=1
         scoreboard.clear()

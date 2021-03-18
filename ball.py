@@ -27,5 +27,5 @@ class Ball(Turtle):
 
     def reset_ball(self):
         self.goto(0,0)
-        self.y_move = 10
-        self.x_move = 10
+        self.paddle_collision()
+
