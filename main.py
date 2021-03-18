@@ -4,6 +4,8 @@ from ball import Ball
 import time
 
 
+BALL_SPEED = 8
+
 screen = Screen()
 
 screen.title("Pong Game")
@@ -25,6 +27,10 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    ball.move(speed=8)
+    ball.move(speed=BALL_SPEED)
+
+    if ball.ycor() > 290 or ball.ycor() < -290:
+        ball.vertical_collision(speed=BALL_SPEED)
+
 
 screen.exitonclick()

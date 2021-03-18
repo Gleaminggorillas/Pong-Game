@@ -16,3 +16,8 @@ class Ball(Turtle):
         new_x = self.xcor()+speed
         new_y = self.ycor()+speed
         self.goto(new_x, new_y)
+
+    def vertical_collision(self, speed):
+        new_x = self.xcor()+speed
+        new_y = self.ycor()-abs(speed)
+        self.goto(new_x, new_y)
