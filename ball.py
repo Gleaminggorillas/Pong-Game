@@ -12,8 +12,9 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(0, 0)
-        self.setheading(random.randint(45,135))
 
     def move(self, speed):
-        super().__init__()
-        self.forward(speed)
+
+        new_x = self.xcor()+speed
+        new_y = self.ycor()+speed
+        self.goto(new_x, new_y)
