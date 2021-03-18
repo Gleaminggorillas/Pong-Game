@@ -2,9 +2,10 @@ from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
 import time
+from scoreboard import Scoreboard
 
 
-BALL_SPEED = 8
+#ALL_SPEED = 8
 
 screen = Screen()
 
@@ -19,18 +20,43 @@ AI = Paddle(-350)
 
 ball  = Ball()
 
+scoreboard = Scoreboard()
+
 screen.listen()
 screen.onkey(player.go_up, "Up")
 screen.onkey(player.go_down, "Down")
+screen.onkey(AI.go_up, "w")
+screen.onkey(AI.go_down, "s")
+
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    ball.move(speed=BALL_SPEED)
+    ball.move()
+    scoreboard.update_scoreboard()
 
-    if ball.ycor() > 290 or ball.ycor() < -290:
-        ball.vertical_collision(speed=BALL_SPEED)
+    #detect vertical collision, invert vertical movement
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.vertical_collision()
+
+    #detect paddle collision, invert horizontal movement
+    if (ball.xcor() == 330 and ball.distance(player) < 50) or (ball.xcor() == -330 and ball.distance(AI) < 50):
+        ball.paddle_collision()
+
+    #detect score
+    if ball.xcor() < -390:
+        scoreboard.player_score +=1
+        scoreboard.clear()
+        scoreboard.update_scoreboard()
+        ball.reset_ball()
+
+    #detect score
+    if ball.xcor() > 390:
+        scoreboard.AI_score +=1
+        scoreboard.clear()
+        scoreboard.update_scoreboard()
+        ball.reset_ball()
 
 
 screen.exitonclick()
