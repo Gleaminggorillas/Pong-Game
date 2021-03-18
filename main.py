@@ -3,14 +3,14 @@ from paddle import Paddle
 
 screen = Screen()
 
-player = Paddle()
-
 screen.title("Pong Game")
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.tracer(0)
 
-player.create_paddle()
+player = Paddle(350)
+
+AI = Paddle(-350)
 
 screen.listen()
 screen.onkey(player.go_up, "Up")
