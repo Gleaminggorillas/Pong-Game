@@ -1,5 +1,4 @@
 from turtle import Turtle
-import random
 
 
 '''Class to create ball for the Pong Game'''
